@@ -6,6 +6,10 @@ const app = express();
 
 app.use('/',Router);
 
+//set up the view engine
+app.set('view engine','ejs')
+app.set('views','./views')
+
 app.listen(port,function(error){
     if(error){
         console.log(`Error while running the expess server ${error}`)
