@@ -4,7 +4,12 @@ const Router = require('./routes/index');
 const app = express();
 const expressLayout = require('express-ejs-layouts');
 
+app.use(express.static('./assets'))
 app.use(expressLayout);
+
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',true);
+
 app.use('/',Router);
 
 //set up the view engine
