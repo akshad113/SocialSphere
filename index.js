@@ -3,6 +3,8 @@ const port = 8000;
 const Router = require('./routes/index');
 const app = express();
 const expressLayout = require('express-ejs-layouts');
+const db = require('./config/mongoose');
+
 
 app.use(express.static('./assets'))
 app.use(expressLayout);
