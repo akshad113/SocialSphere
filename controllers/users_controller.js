@@ -1,13 +1,20 @@
 const User = require('../models/user')
 module.exports.profile = function(req,res){
+    
     res.render('users_profile',{title:'users profile'});
 }
 
 module.exports.signIn = function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile')
+    }
     res.render('users_sign_in',{title:'login page'});
 }
 
-module.exports.signUp = function(req,res){
+module.exports.signUp = function(req,res){ 
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile')
+    }
     res.render('users_sign_up',{title:'create account'});
 }
 module.exports.create = async function(req, res) {
@@ -22,10 +29,26 @@ module.exports.create = async function(req, res) {
             await User.create(req.body);
             return res.redirect('/');
         } else {
-            return res.redirect('back');
+            return res.redirect('/users/sign-in');
         }
     } catch (error) {
         console.error("Error while creating user:", error);
         return res.redirect('back');
     }
 };
+
+module.exports.createSession = function(req,res){
+    return res.redirect("/");
+}
+
+module.exports.destroySession = function(req,res){
+    req.logout(function(err){
+        if(err){
+            console.log(err);
+            return res.redirect('back');
+        }
+        return res.redirect('/')
+
+    });
+
+}
