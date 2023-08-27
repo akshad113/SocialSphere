@@ -7,4 +7,5 @@ console.log("Router is setup and running");
 router.get('/',homeController.home);
 router.use('/users',require('./users'));
 router.use('/posts',require('./posts'));
-module.exports = router;
+router.use('/comments',require('./comment'))
+module.exports = router; 

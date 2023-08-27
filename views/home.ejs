@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/css/home.css" />
 <h1>Wellcome! to <%= title%></h1>
 
 <section id="new-post">
@@ -9,6 +10,7 @@
       cols="30"
       rows="10"
       placeholder="Type Here..."
+      required
     ></textarea>
     <input type="submit" value="Post" />
   </form>
@@ -17,8 +19,36 @@
     <ul>
       <% for (post of posts){ %>
       <li>
-        <p><%= post.content %></p>
-        <small><%= post.user.name %></small>
+        <p>
+          <%= post.content %>
+          <small><%= post.user.name %></small>
+        </p>
+        <div class="post-comment">
+          <% if(locals.user) { %>
+          <form action="/comments/create" method="POST">
+            <input
+              type="text"
+              name="content"
+              placeholder="Type here to add comment ..."
+              id=""
+              required
+            />
+            <input type="hidden" name="post" value="<%= post._id%>" />
+            <input type="submit" value="comment" />
+          </form>
+          <div class="post-comment-list">
+            <ul id="post-comment">
+              <% for (comment of post.comment) {%>
+              <p>
+                <%= comment.content %> <br />
+                <small><%=comment.user.name %></small>
+              </p>
+
+              <% } %>
+            </ul>
+          </div>
+          <% }%>
+        </div>
       </li>
 
       <% } %>

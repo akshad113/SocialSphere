@@ -37,6 +37,7 @@ app.use(session({
     cookie:{
         maxAge:(1000*60*100)
     },
+    resave:false,
     store: MongoStore.create({
         mongoUrl: 'mongodb://127.0.0.1:27017/socialSphere_development',
         autoRemove:'disabled'
