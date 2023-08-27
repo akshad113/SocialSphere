@@ -3,7 +3,10 @@ h1 {
     text-align: center;
     margin: 20px 0;
   }
-  
+#section-container{
+    display: flex;
+    justify-content: space-between;
+}
   /* Styles for the new post section */
   #new-post {
     min-height: 75%;
@@ -79,3 +82,32 @@ h1 {
   
   }
   
+//   styles for friend section 
+#friend-list {
+    width: 20%;
+    background-color: white;
+    border-left: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0,0.1);
+  }
+  
+  /* Styles for the friend list */
+  #friend-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #friend-list p {
+    margin: 5px 0;
+  }
+  
+  #friend-list a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+  }
+  
+  #friend-list a:hover {
+    color: blue
+  }
