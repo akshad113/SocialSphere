@@ -9,7 +9,16 @@ module.exports.profile = async function(req,res){
         return res.redirect('back');
     }
 }
-
+module.exports.update = async function(req,res){
+    try {
+        await User.findByIdAndUpdate(req.params.id,{name:req.body.user_name,email:req.body.user_email});
+        return res.redirect('back');
+        
+    } catch (error) {
+        console.log("Error while updating profile ", error);
+        return res.redirect("back");
+    }
+}
 module.exports.signIn = function(req,res){
     if(req.isAuthenticated()){
         return res.redirect('/users/profile')
