@@ -6,6 +6,7 @@ footer {
   text-align: center;
   justify-content: space-between; }
   footer div {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between; }
     footer div a {

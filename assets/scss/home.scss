@@ -1,0 +1,80 @@
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  /* Styles for the new post section */
+  #new-post {
+    width: 45%;
+    padding: 20px;
+    margin: 0 auto;
+    /* Form styles */
+    form {
+        margin-bottom: 10px;
+    }
+    
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+    }
+    
+    input[type="submit"] {
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #555;
+    }
+    
+    /* Styles for posts */
+    ul {
+        list-style: none;
+    }
+    
+    li {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px 0;
+    }
+    
+    p {
+        margin-bottom: 5px;
+    }
+    
+    small {
+        color: #777;
+    }
+    
+    /* Styles for comments */
+    .post-comment {
+        border-top: 1px dashed #ccc;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+    
+    .post-comment input[type="text"] {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+    
+    /* Styles for comment list */
+    #post-comment p {
+        border-top: 1px dashed #ccc;
+        padding-top: 5px;
+        margin-top: 5px;
+    }
+  
+  }
+  

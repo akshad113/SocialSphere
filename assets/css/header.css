@@ -14,7 +14,7 @@ header {
     display: flex;
     justify-content: space-between; }
     header ul li {
-      margin: 0 3px; }
+      margin: 10px 3px; }
       header ul li a {
         text-decoration: none;
         color: white; }
