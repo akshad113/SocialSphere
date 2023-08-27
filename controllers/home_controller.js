@@ -1,4 +1,5 @@
 const Post = require('../models/post')
+const User = require("../models/user")
 module.exports.home = async function(req,res){
     
     
@@ -10,8 +11,8 @@ module.exports.home = async function(req,res){
             }
 
         });
-        // console.log(posts)
-        return res.render('home',{title : "codeSphere",posts:posts})
+        const users = await User.find({}); 
+        return res.render('home',{title : "codeSphere",posts:posts,all_users:users})
 
     } catch (error) {
         console.log("Error while searching posts in db",error)

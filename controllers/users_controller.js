@@ -1,7 +1,13 @@
 const User = require('../models/user')
-module.exports.profile = function(req,res){
-    
-    res.render('users_profile',{title:'users profile'});
+module.exports.profile = async function(req,res){
+    try {
+        const user = await User.findById(req.params.id)
+        res.render('users_profile',{title:'users profile',profile_user: user});
+        
+    } catch (error) {
+        console.log("Error while finding user in profile")
+        return res.redirect('back');
+    }
 }
 
 module.exports.signIn = function(req,res){
