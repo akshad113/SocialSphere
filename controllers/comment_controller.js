@@ -18,3 +18,21 @@ module.exports.create = async function(req,res){
         console.log("Error while creating comment",error);
     }
 }
+
+
+module.exports.destroy = async function(req,res){
+    try {
+        const comment = await Comment.findById(req.params.id);
+        if(comment.user == req.user.id){
+            let postId = comment.post;
+            await comment.deleteOne();
+
+            await Post.findByIdAndUpdate(postId,{$pull:{comment:req.params.id}});
+            return res.redirect('back');
+        }
+    } catch (error) {
+        console.log("Error while deleting comment",error);
+        return res.redirect('back');
+    }
+
+}
