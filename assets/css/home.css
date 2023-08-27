@@ -4,6 +4,7 @@ h1 {
 
 /* Styles for the new post section */
 #new-post {
+  min-height: 75%;
   width: 45%;
   padding: 20px;
   margin: 0 auto;

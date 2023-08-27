@@ -1,6 +1,8 @@
 * {
   margin: 0;
   box-sizing: border-box; }
- 
+
 body {
   font-family: Arial, sans-serif; }
+  body main {
+    min-height: 85%; }
