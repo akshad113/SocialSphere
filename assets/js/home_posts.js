@@ -1,27 +1,35 @@
 {
     // method to submit the form data for new post using Ajax
-    let createPost = function(){
+    let createPost = function () {
         let newPostForm = $('#new-post-form');
 
-        newPostForm.submit(function(e){
+        newPostForm.submit(function (e) {
             e.preventDefault();
 
             $.ajax({
-                type:'post',
+                type: 'post',
                 url: '/posts/create',
                 data: newPostForm.serialize(),
-                success: function(data){
+                success: function (data) {
                     let newPost = newPostDom(data.data.post);
                     $('#post-list-container>ul').prepend(newPost)
-                    deletePost($('delete-post-button',newPost));
-                },error: function(error){
+                    // Create a success notification
+                    new Noty({
+                        type: 'success',
+                        theme: 'relax',
+                        text: 'Post created successfully!',
+                        layout: 'topRight',
+                        timeout: 1500, // Duration for the message to be displayed
+                    }).show();
+                    deletePost($('delete-post-button', newPost));
+                }, error: function (error) {
                     console.log(error.responseText);
                 }
             })
         })
-    } 
+    }
     // methos to create a post in DOM
-    let newPostDom = function(post){
+    let newPostDom = function (post) {
         return $(`<li id="post-${post._id}">
                     <p>
                     
@@ -53,26 +61,33 @@
                     </div>
                  </li>
       `)
-     }
-    
+    }
+
     // method to delte the post for doc
-    $(document).on('click', '.delete-post-button', function(e) {
+    $(document).on('click', '.delete-post-button', function (e) {
         e.preventDefault();
-    
+
         let deleteLink = $(this);
-    
+
         $.ajax({
             type: 'get',
             url: deleteLink.attr('href'),
-            success: function(data) {
+            success: function (data) {
                 $(`#post-${data.data.post_id}`).remove();
+                new Noty({
+                    type: 'success',
+                    theme: 'relax',
+                    text: 'Post deleted successfully!',
+                    layout: 'topRight',
+                    timeout: 3000, // Duration for the message to be displayed
+                }).show();
             },
-            error: function(error) {
+            error: function (error) {
                 console.log(error.responseText);
             }
         });
     });
-    
+
 
     createPost();
 }
