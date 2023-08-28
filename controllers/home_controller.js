@@ -12,6 +12,7 @@ module.exports.home = async function(req,res){
 
         });
         const users = await User.find({}); 
+        
         return res.render('home',{title : "codeSphere",posts:posts,all_users:users})
 
     } catch (error) {
